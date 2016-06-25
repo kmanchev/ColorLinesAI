@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Colored Lines aka Winlines - Games for the Brain</title>
+        <link rel="stylesheet" href="/lib/shared.css?v=1_64" type="text/css" media="screen, projection, print" /><script type="text/javascript" src="/lib/dynamic.js?v=1_48"></script><meta name="viewport" id="vp" content="user-scalable=yes,width=device-width"/>        <script type="text/javascript" src="default2.js"></script>
+        <script type="text/javascript" src="avatar.js"></script>
+        <script type="text/javascript" src="circle.js"></script>
+        <script type="text/javascript" src="shortest-path.js"></script>
+        <script type="text/javascript" src="ai.js"></script>
+        <script type="text/javascript" src="ai-cluster-elem.js"></script>
+        <link rel="stylesheet" href="default2.css" type="text/css" media="screen, projection, print" />
+    </head>
+    <body onload="init(9,7,3,48,10)">
+    <div class="all">
+
+    <div id="counter">&nbsp;</div>
+
+    <div class="page">
+    
+    <h1>Colored Lines</h1>
+
+    <div class="content">
+        <div class="gameWrapper">
+        <div class="board"><img src="image2/tile.png" alt=""  style="left: 0px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,0)"  style="left: 0px; top: 0px" id="ball0_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,1)"  style="left: 0px; top: 48px" id="ball0_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,2)"  style="left: 0px; top: 96px" id="ball0_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,3)"  style="left: 0px; top: 144px" id="ball0_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,4)"  style="left: 0px; top: 192px" id="ball0_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,5)"  style="left: 0px; top: 240px" id="ball0_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,6)"  style="left: 0px; top: 288px" id="ball0_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,7)"  style="left: 0px; top: 336px" id="ball0_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 0px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(0,8)"  style="left: 0px; top: 384px" id="ball0_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,0)"  style="left: 48px; top: 0px" id="ball1_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,1)"  style="left: 48px; top: 48px" id="ball1_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,2)"  style="left: 48px; top: 96px" id="ball1_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,3)"  style="left: 48px; top: 144px" id="ball1_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,4)"  style="left: 48px; top: 192px" id="ball1_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,5)"  style="left: 48px; top: 240px" id="ball1_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,6)"  style="left: 48px; top: 288px" id="ball1_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,7)"  style="left: 48px; top: 336px" id="ball1_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 48px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(1,8)"  style="left: 48px; top: 384px" id="ball1_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,0)"  style="left: 96px; top: 0px" id="ball2_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,1)"  style="left: 96px; top: 48px" id="ball2_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,2)"  style="left: 96px; top: 96px" id="ball2_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,3)"  style="left: 96px; top: 144px" id="ball2_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,4)"  style="left: 96px; top: 192px" id="ball2_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,5)"  style="left: 96px; top: 240px" id="ball2_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,6)"  style="left: 96px; top: 288px" id="ball2_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,7)"  style="left: 96px; top: 336px" id="ball2_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 96px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(2,8)"  style="left: 96px; top: 384px" id="ball2_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,0)"  style="left: 144px; top: 0px" id="ball3_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,1)"  style="left: 144px; top: 48px" id="ball3_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,2)"  style="left: 144px; top: 96px" id="ball3_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,3)"  style="left: 144px; top: 144px" id="ball3_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,4)"  style="left: 144px; top: 192px" id="ball3_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,5)"  style="left: 144px; top: 240px" id="ball3_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,6)"  style="left: 144px; top: 288px" id="ball3_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,7)"  style="left: 144px; top: 336px" id="ball3_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 144px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(3,8)"  style="left: 144px; top: 384px" id="ball3_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,0)"  style="left: 192px; top: 0px" id="ball4_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,1)"  style="left: 192px; top: 48px" id="ball4_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,2)"  style="left: 192px; top: 96px" id="ball4_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,3)"  style="left: 192px; top: 144px" id="ball4_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,4)"  style="left: 192px; top: 192px" id="ball4_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,5)"  style="left: 192px; top: 240px" id="ball4_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,6)"  style="left: 192px; top: 288px" id="ball4_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,7)"  style="left: 192px; top: 336px" id="ball4_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 192px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(4,8)"  style="left: 192px; top: 384px" id="ball4_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,0)"  style="left: 240px; top: 0px" id="ball5_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,1)"  style="left: 240px; top: 48px" id="ball5_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,2)"  style="left: 240px; top: 96px" id="ball5_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,3)"  style="left: 240px; top: 144px" id="ball5_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,4)"  style="left: 240px; top: 192px" id="ball5_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,5)"  style="left: 240px; top: 240px" id="ball5_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,6)"  style="left: 240px; top: 288px" id="ball5_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,7)"  style="left: 240px; top: 336px" id="ball5_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 240px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(5,8)"  style="left: 240px; top: 384px" id="ball5_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,0)"  style="left: 288px; top: 0px" id="ball6_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,1)"  style="left: 288px; top: 48px" id="ball6_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,2)"  style="left: 288px; top: 96px" id="ball6_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,3)"  style="left: 288px; top: 144px" id="ball6_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,4)"  style="left: 288px; top: 192px" id="ball6_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,5)"  style="left: 288px; top: 240px" id="ball6_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,6)"  style="left: 288px; top: 288px" id="ball6_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,7)"  style="left: 288px; top: 336px" id="ball6_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 288px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(6,8)"  style="left: 288px; top: 384px" id="ball6_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,0)"  style="left: 336px; top: 0px" id="ball7_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,1)"  style="left: 336px; top: 48px" id="ball7_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,2)"  style="left: 336px; top: 96px" id="ball7_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,3)"  style="left: 336px; top: 144px" id="ball7_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,4)"  style="left: 336px; top: 192px" id="ball7_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,5)"  style="left: 336px; top: 240px" id="ball7_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,6)"  style="left: 336px; top: 288px" id="ball7_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,7)"  style="left: 336px; top: 336px" id="ball7_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 336px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(7,8)"  style="left: 336px; top: 384px" id="ball7_8" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 0px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,0)"  style="left: 384px; top: 0px" id="ball8_0" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 48px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,1)"  style="left: 384px; top: 48px" id="ball8_1" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 96px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,2)"  style="left: 384px; top: 96px" id="ball8_2" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 144px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,3)"  style="left: 384px; top: 144px" id="ball8_3" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 192px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,4)"  style="left: 384px; top: 192px" id="ball8_4" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 240px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,5)"  style="left: 384px; top: 240px" id="ball8_5" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 288px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,6)"  style="left: 384px; top: 288px" id="ball8_6" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 336px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,7)"  style="left: 384px; top: 336px" id="ball8_7" class="ball" />
+<img src="image2/tile.png" alt=""  style="left: 384px; top: 384px" class="tile" />
+<img src="image2/ball-1.png" alt="" onclick="clickMap(8,8)"  style="left: 384px; top: 384px" id="ball8_8" class="ball" />
+</div>
+    </div>
+    <div class="nextLabel">Next colors:</div><img src="image2/ball-1.png" alt="" class="nextBall" id="nextBall0" style="left: 452px; top: 102px" /><img src="image2/ball-1.png" alt="" class="nextBall" id="nextBall1" style="left: 452px; top: 126px" /><img src="image2/ball-1.png" alt="" class="nextBall" id="nextBall2" style="left: 452px; top: 150px" />
+    <div id="scoreBar">Score: <span id="scoreValue">0</span></div>
+    <div id="scoreBarOverlay">&nbsp;</div>
+
+    <p class="instructions">
+     <button onclick="triggerAI(9)">Trigger AI</button><br />
+    </p>
+
+        <p class="instructions">
+        Click a ball, then click an empty square to move. You can only move along unblocked paths. Build rows of 5 or more balls of one color to score. | <br />
+       [Original concept by Olga Demina, also known as Winlinez and Color Linez.]
+    </p>
+
+    <div id="gameOverShade">&nbsp;</div>
+    <div id="gameOver">
+        <p><strong>Game over.</strong></p>
+        <p>Score: <span id="gameOverScore">0</span></p>
+        <p class="unimportant"><a href="./">Restart...</a></p>
+    </div>
+
+    <img src="image2/blank.png" alt="" class="avatar" id="avatar0" />
+    <img src="image2/blank.png" alt="" class="avatar" id="avatar1" />
+
+<img src="image2/blank.png" alt="" class="circle" id="circle1" />
+<img src="image2/blank.png" alt="" class="circle" id="circle2" />
+<img src="image2/blank.png" alt="" class="circle" id="circle3" />
+<img src="image2/blank.png" alt="" class="circle" id="circle4" />
+<img src="image2/blank.png" alt="" class="circle" id="circle5" />
+<img src="image2/blank.png" alt="" class="circle" id="circle6" />
+<img src="image2/blank.png" alt="" class="circle" id="circle7" />
+<img src="image2/blank.png" alt="" class="circle" id="circle8" />
+<img src="image2/blank.png" alt="" class="circle" id="circle9" />
+    </div>
+
+        <div class="score">&quot;IQ&quot; Score: 0</div>
+    
+    <div id="navigation">
+
+                    
+    
+            <div class="mainNavigation" id="enMainNavigation">
+                
+
+
+            </div>
+        
+               
+        
+    </div>
+
+            <div id="counterwrap" onclick="misc_toggleTimer()" title="Pause timer"><div id="counterbar">&nbsp;</div></div>
+        </div>
+        
+
+</script>
+<script type="text/javascript">
+_uacct = "UA-60595-5";
+urchinTracker();
+</script>
+
+    </body>
+    </html>

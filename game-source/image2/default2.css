@@ -1,0 +1,160 @@
+.gameWrapper
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 522px;
+    height: 450px;
+}
+
+.tile,
+.ball,
+.nextBall,
+.overlay
+{
+    position: absolute;
+}
+
+.tile,
+.tile img,
+.ball,
+.ball img,
+img.ball
+{
+    width: 48px;
+    height: 48px;
+}
+
+.nextLabel
+{
+    position: absolute;
+    left: 450px;
+    top: 60px;
+    width: 80px;
+    font-size: 90%;
+    color: #aaa;
+    font-weight: bold;
+}
+
+#navigation
+{
+    top: 80px;
+}
+
+img.nextBall
+{
+    width: 24px;
+    height: 24px;
+}
+
+.overlay
+{
+    text-align: center;
+    font-size: 170%;
+    color: #fff;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    padding-left: 2px;
+}
+
+#counterwrap,
+.score
+{
+    display: none;
+}
+
+#scoreBar,
+#scoreBarOverlay
+{
+    background-color: rgb(199,199,199);
+    border: 1px solid #777;
+    height: 24px;
+    padding-top: 6px;
+    width: 120px;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    background-image: url(image2/bar.png);
+    background-repeat: repeat-x;
+    color: #666;
+}
+
+#scoreBarOverlay
+{
+    background-color: rgb(248,227,48);
+    margin-top: -32px;
+    background-image: url(image2/bar-overlay.png);
+    display: none;
+}
+
+#gameOver,
+#gameOverShade
+{
+    position: absolute;
+    font-size: 150%;
+    background-color: #fff;
+    color: #777;
+    border: 1px solid black;
+    text-align: center;
+    left: 60px;
+    top: 170px;
+    width: 320px;
+    height: 190px;
+    -moz-border-radius: 8px;
+    display: none;
+}
+
+#gameOver .unimportant
+{
+    font-size: 14px;
+}
+
+#gameOverShade
+{
+    background-color: #000;
+    left: 70px;
+    top: 180px;
+    -moz-opacity: .4;
+    filter: alpha(opacity=40);
+}
+
+.avatar
+{
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 500px;
+    width: 48px;
+    height: 48px;
+}
+
+h1
+{
+    color: #444;
+}
+
+.circle
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 42px;
+    height: 42px:
+    display: none;
+}
+
+.instructions
+{
+    width: 500px;
+}
+
+#tellFriend {
+    position: absolute;
+    left: 452px;
+    top: 200px;
+    width: 90px;
+    font-size: 86%;
+}
