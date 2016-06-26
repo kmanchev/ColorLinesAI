@@ -30,36 +30,66 @@ function decideMove() {
   	var freeTiles = ai.getFreeTiles();
 	var singleElements = ai.getSingleElements();
 
-	if (ai.slotForAppendUpVertical(sortedVerticalClusters[0])) {
-		var appendUp = ai.slotForAppendUpVertical(sortedVerticalClusters[0]);
-		console.log(appendUp);
+	if (sortedVerticalClusters) {
+		for (var i = 0; i < sortedVerticalClusters.length; i++) {
+			if (ai.sameColorSingleElements(sortedVerticalClusters[i],singleElements)) {
+				var sameColorSingleElements = ai.sameColorSingleElements(sortedVerticalClusters[i],singleElements);
+
+				if (ai.slotForAppendUpVertical(sortedVerticalClusters[i])) {
+					for (j = 0; j < sameColorSingleElements.length ; j++) {
+						var slotForAppendUp = ai.slotForAppendUpVertical(sortedVerticalClusters[i]);
+						var shortestPath = getShortestPath(sameColorSingleElements[j].x, sameColorSingleElements[j].y, slotForAppendUp.x, slotForAppendUp.y);
+	                	if (shortestPath.length >= 1) {
+	                    	aiClick(sameColorSingleElements[j].x,sameColorSingleElements[j].y);
+	                    	 setTimeout(function(){ aiClick(slotForAppendUp.x,slotForAppendUp.y); }, 1000);
+	                    	 return true;
+	                	}
+					}
+				} else if (ai.slotForAppendDownVertical(sortedVerticalClusters[i])) {
+					for (j = 0; j < sameColorSingleElements.length ; j++) {
+						var slotForAppendDown = ai.slotForAppendDownVertical(sortedVerticalClusters[i]);
+						var shortestPath = getShortestPath(sameColorSingleElements[j].x, sameColorSingleElements[j].y, slotForAppendDown.x, slotForAppendDown.y);
+	                	if (shortestPath.length >= 1) {
+	                    	aiClick(sameColorSingleElements[j].x,sameColorSingleElements[j].y);
+	                    	 setTimeout(function(){ aiClick(slotForAppendDown.x,slotForAppendDown.y); }, 1000);
+	                    	 return true;
+	                	}
+					}
+				}
+			}
+		}
 	}
 
-		if (ai.slotForAppendDownVertical(sortedVerticalClusters[0])) {
-		var appendDown = ai.slotForAppendDownVertical(sortedVerticalClusters[0]);
-		console.log(appendDown);
+	if (sortedHorizontalClusters) {
+		for (var i = 0; i < sortedHorizontalClusters.length; i++) {
+			if (ai.sameColorSingleElements(sortedHorizontalClusters[i],singleElements)) {
+				var sameColorSingleElements = ai.sameColorSingleElements(sortedHorizontalClusters[i],singleElements);	
+
+				if (ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[i])) {
+					for (j = 0; j < sameColorSingleElements.length ; j++) {
+						var slotForAppendLeft = ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[i]);
+						var shortestPath = getShortestPath(sameColorSingleElements[j].x, sameColorSingleElements[j].y, slotForAppendLeft.x, slotForAppendLeft.y);
+	                	if (shortestPath.length >= 1) {
+	                    	aiClick(sameColorSingleElements[j].x,sameColorSingleElements[j].y);
+	                    	 setTimeout(function(){ aiClick(slotForAppendLeft.x,slotForAppendLeft.y); }, 1000);
+	                    	 return true;
+	                	}
+					}
+				} else if (ai.slotForAppendRightHorizontal(sortedVerticalClusters[i])) {
+					for (j = 0; j < sameColorSingleElements.length ; j++) {
+						var slotForAppendRight = ai.slotForAppendRightHorizontal(sortedVerticalClusters[i]);
+						var shortestPath = getShortestPath(sameColorSingleElements[j].x, sameColorSingleElements[j].y, slotForAppendRight.x, slotForAppendRight.y);
+	                	if (shortestPath.length >= 1) {
+	                    	aiClick(sameColorSingleElements[j].x,sameColorSingleElements[j].y);
+	                    	 setTimeout(function(){ aiClick(slotForAppendRight.x,slotForAppendRight.y); }, 1000);
+	                    	 return true;
+	                	}
+					}
+				} 
+			}
+		}
 	}
-
-		if (ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[0])) {
-		var appendLeft = ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[0]);
-		console.log(appendLeft);
-	}
-
-		if (ai.slotForAppendRightHorizontal(sortedHorizontalClusters[0])) {
-		var appendRight = ai.slotForAppendRightHorizontal(sortedHorizontalClusters[0]);
-		console.log(appendRight);
-	}
-
-	var sameColorSingleElem = ai.sameColorSingleElement(sortedVerticalClusters[0],singleElements);
-	console.log(sameColorSingleElem);
-
-	/*console.log(verticalClusters);
-	console.log(horizontalClusters);
-	console.log(sortedVerticalClusters);
-	console.log(sortedHorizontalClusters);
-	console.log(freeTiles);
-	console.log(singleElements);*/
- 	
+	return false;	
  }
 
 
@@ -82,7 +112,6 @@ AI.prototype.scanVertical = function(mapMax) {
 	// max length of cluster is 4  
 	var verticalClusters = new Array();
 	
-
 	for (var x = 0;x < mapMax; x++) {
 		var verticalCluster = new Array();
 		for(var y = 0;y < mapMax; y++) {
@@ -120,7 +149,6 @@ AI.prototype.scanVertical = function(mapMax) {
 				verticalClusters.push(verticalCluster);
 			}	
 		}
-
 	}
 	return verticalClusters;
 }
@@ -243,19 +271,22 @@ AI.prototype.getSingleElements = function() {
  
 AI.prototype.sortClusterDecending = function(clusters) {
 
-    var swapped;
-    do {
-        swapped = false;
-        for (var i=0; i < clusters.length-1; i++) {
-            if (clusters[i].length < clusters[i+1].length) {
-                var temp = clusters[i];
-                clusters[i] = clusters[i+1];
-                clusters[i+1] = temp;
-                swapped = true;
-            }
-        }
-    } while (swapped);
-	return clusters;
+	if (clusters.length > 0) {
+	    var swapped;
+	    do {
+	        swapped = false;
+	        for (var i=0; i < clusters.length-1; i++) {
+	            if (clusters[i].length < clusters[i+1].length) {
+	                var temp = clusters[i];
+	                clusters[i] = clusters[i+1];
+	                clusters[i+1] = temp;
+	                swapped = true;
+	            }
+	        }
+	    } while (swapped);
+		return clusters;
+	}
+	return false
 }
 
 AI.prototype.slotForAppendUpVertical = function(verticalCluster) {
@@ -346,13 +377,18 @@ AI.prototype.slotForAppendRightHorizontal = function(horizontalCluster,emptySlot
 	return false;
 }
 
-AI.prototype.sameColorSingleElement = function(cluster,singleElements) {
+AI.prototype.sameColorSingleElements = function(cluster,singleElements) {
 
 	var colorValue = cluster[0].colorValue;
+	var sameSingleElems = new Array();
 	for (var i=0; i < singleElements.length; i++) {
 		if(singleElements[i].colorValue == colorValue) {
-			return singleElements[i];
+			sameSingleElems.push(singleElements[i]);
 		}
+	}
+
+	if (sameSingleElems.length > 0) {
+		return sameSingleElems;
 	}
 	return false;
 }
