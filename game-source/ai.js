@@ -15,7 +15,10 @@ function AI() {
 	ai.decideMove(this.ai_mapMax);
 }*/
 
+function triggerAI() {
 
+	console.log(decideMove());
+}
 
 function decideMove() {
 
@@ -75,9 +78,9 @@ function decideMove() {
 	                    	 return true;
 	                	}
 					}
-				} else if (ai.slotForAppendRightHorizontal(sortedVerticalClusters[i])) {
+				} else if (ai.slotForAppendRightHorizontal(sortedHorizontalClusters[i])) {
 					for (j = 0; j < sameColorSingleElements.length ; j++) {
-						var slotForAppendRight = ai.slotForAppendRightHorizontal(sortedVerticalClusters[i]);
+						var slotForAppendRight = ai.slotForAppendRightHorizontal(sortedHorizontalClusters[i]);
 						var shortestPath = getShortestPath(sameColorSingleElements[j].x, sameColorSingleElements[j].y, slotForAppendRight.x, slotForAppendRight.y);
 	                	if (shortestPath.length >= 1) {
 	                    	aiClick(sameColorSingleElements[j].x,sameColorSingleElements[j].y);
@@ -314,9 +317,10 @@ AI.prototype.slotForAppendUpVertical = function(verticalCluster) {
 AI.prototype.slotForAppendDownVertical = function(verticalCluster) {
 
 	  if(typeof verticalCluster != 'undefined') {
-		var x = verticalCluster[0].x;
-		var y = verticalCluster[0].y;
-		var colorValue = verticalCluster[0].colorValue;
+	  	var l = verticalCluster.length - 1;
+		var x = verticalCluster[l].x;
+		var y = verticalCluster[l].y;
+		var colorValue = verticalCluster[l].colorValue;
 		if (y+1 < this.ai_mapMax) {
 			if (this.ai_map[x][y+1] == this.ai_empty) {
 				element = new MapElement();
@@ -355,12 +359,13 @@ AI.prototype.slotForAppendLeftHorizontal = function(horizontalCluster) {
 	return false;
 }
 
-AI.prototype.slotForAppendRightHorizontal = function(horizontalCluster,emptySlots) {
+AI.prototype.slotForAppendRightHorizontal = function(horizontalCluster) {
 
 	if(typeof horizontalCluster != 'undefined') {
-		var x = horizontalCluster[0].x;
-		var y = horizontalCluster[0].y;
-		var colorValue = horizontalCluster[0].colorValue;
+		var l = horizontalCluster.length - 1;
+		var x = horizontalCluster[l].x;
+		var y = horizontalCluster[l].y;
+		var colorValue = horizontalCluster[l].colorValue;
 		if (x+1 < this.ai_mapMax) {
 			if (this.ai_map[x+1][y] == this.ai_empty) {
 				element = new MapElement();
