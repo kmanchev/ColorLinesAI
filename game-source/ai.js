@@ -22,7 +22,7 @@ function decideMove() {
 	var ai = new AI();
 	var mapMax = ai.ai_mapMax;
 	ai.scanMap(mapMax);
-	console.log(ai.ai_map[1][2]);
+	//console.log(ai.ai_map[1][2]);
 	var verticalClusters = ai.scanVertical(mapMax);
   	var horizontalClusters = ai.scanHorizontal(mapMax);
   	var sortedVerticalClusters = ai.sortClusterDecending(verticalClusters);
@@ -36,19 +36,22 @@ function decideMove() {
 	}
 
 		if (ai.slotForAppendDownVertical(sortedVerticalClusters[0])) {
-		var appendUp = ai.slotForAppendDownVertical(sortedVerticalClusters[0]);
-		console.log(appendUp);
+		var appendDown = ai.slotForAppendDownVertical(sortedVerticalClusters[0]);
+		console.log(appendDown);
 	}
 
-		if (ai.slotForAppendLeftHorizontal(sortedVerticalClusters[0])) {
-		var appendUp = ai.slotForAppendLeftHorizontal(sortedVerticalClusters[0]);
-		console.log(appendUp);
+		if (ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[0])) {
+		var appendLeft = ai.slotForAppendLeftHorizontal(sortedHorizontalClusters[0]);
+		console.log(appendLeft);
 	}
 
-		if (ai.slotForAppendRightHorizontal(sortedVerticalClusters[0])) {
-		var appendUp = ai.slotForAppendRightHorizontal(sortedVerticalClusters[0]);
-		console.log(appendUp);
+		if (ai.slotForAppendRightHorizontal(sortedHorizontalClusters[0])) {
+		var appendRight = ai.slotForAppendRightHorizontal(sortedHorizontalClusters[0]);
+		console.log(appendRight);
 	}
+
+	var sameColorSingleElem = ai.sameColorSingleElement(sortedVerticalClusters[0],singleElements);
+	console.log(sameColorSingleElem);
 
 	/*console.log(verticalClusters);
 	console.log(horizontalClusters);
@@ -343,13 +346,15 @@ AI.prototype.slotForAppendRightHorizontal = function(horizontalCluster,emptySlot
 	return false;
 }
 
-AI.prototyp.sameColorSingleElement = function (cluster,singleElements) {
+AI.prototype.sameColorSingleElement = function(cluster,singleElements) {
 
-	var colorValue = cluster.colorValue;
-
-	for (var i=0; i < singleElements.length-1; i++) {
+	var colorValue = cluster[0].colorValue;
+	for (var i=0; i < singleElements.length; i++) {
+		if(singleElements[i].colorValue == colorValue) {
+			return singleElements[i];
+		}
 	}
-
+	return false;
 }
  
 

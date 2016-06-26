@@ -8,6 +8,7 @@
         <script type="text/javascript" src="shortest-path.js"></script>
         <script type="text/javascript" src="ai.js"></script>
         <script type="text/javascript" src="ai-cluster-elem.js"></script>
+        <script type="text/javascript" src="ai-click.js"></script>
         <link rel="stylesheet" href="default2.css" type="text/css" media="screen, projection, print" />
     </head>
     <body onload="init(9,7,3,48,10)">
@@ -190,7 +191,9 @@
     <div id="scoreBarOverlay">&nbsp;</div>
 
     <p class="instructions">
-     <button onclick="triggerAI(9)">Trigger AI</button><br />
+     <button onclick="decideMove()">Trigger AI</button><br />
+     <button onclick="aiClick(0,0)">ai click 0 0</button><br />
+     <button onclick="aiClick(1,1)">ai click 1 1</button><br />
     </p>
 
         <p class="instructions">
