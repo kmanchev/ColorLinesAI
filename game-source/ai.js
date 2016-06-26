@@ -92,6 +92,51 @@ function decideMove() {
 			}
 		}
 	}
+
+	if (ai.sameColorSingleElementsPair(singleElements)) {
+		var pair = ai.sameColorSingleElementsPair(singleElements);
+		x = pair[1].x;
+		y = pair[1].y;
+
+		for (i = 0; i < freeTiles.length; i++) {
+
+			if (freeTiles[i].y == pair[1].y && freeTiles[i].x == pair[1].x + 1) {
+				var shortestPath = getShortestPath(pair[0].x, pair[0].y, freeTiles[i].x, freeTiles[i].y);
+	        	if (shortestPath.length >= 1) {
+					aiClick(pair[0].x,pair[0].y);
+					setTimeout(function(){ aiClick(freeTiles[i].x,freeTiles[i].y); }, 1000);
+					return true;
+				}
+			} else if (freeTiles[i].y == pair[1].y && freeTiles[i].x == pair[1].x - 1) {
+				var shortestPath = getShortestPath(pair[0].x, pair[0].y, freeTiles[i].x, freeTiles[i].y);
+	        	if (shortestPath.length >= 1) {
+					aiClick(pair[0].x,pair[0].y);
+					setTimeout(function(){ aiClick(freeTiles[i].x,freeTiles[i].y); }, 1000);
+					return true;
+				}
+			} else if (freeTiles[i].x == pair[1].x && freeTiles[i].y == pair[1].y + 1) {
+				var shortestPath = getShortestPath(pair[0].x, pair[0].y, freeTiles[i].x, freeTiles[i].y);
+	        	if (shortestPath.length >= 1) {
+					aiClick(pair[0].x,pair[0].y);
+					setTimeout(function(){ aiClick(freeTiles[i].x,freeTiles[i].y); }, 1000);
+					return true;
+				}
+			} else if (freeTiles[i].x == pair[1].x && freeTiles[i].y == pair[1].y - 1) {
+				var shortestPath = getShortestPath(pair[0].x, pair[0].y, freeTiles[i].x, freeTiles[i].y);
+	        	if (shortestPath.length >= 1) {
+					aiClick(pair[0].x,pair[0].y);
+					setTimeout(function(){ aiClick(freeTiles[i].x,freeTiles[i].y); }, 1000);
+					return true;
+				}
+			}
+		}
+	} else {
+
+			aiClick(singleElements[0].x,singleElements[0].y);
+			setTimeout(function(){ aiClick(freeTiles[0].x,freeTiles[0].y); }, 1000);
+			return true;
+	}
+
 	return false;	
  }
 
@@ -394,6 +439,21 @@ AI.prototype.sameColorSingleElements = function(cluster,singleElements) {
 
 	if (sameSingleElems.length > 0) {
 		return sameSingleElems;
+	}
+	return false;
+}
+
+AI.prototype.sameColorSingleElementsPair = function (singleElements) {
+
+	var sameSingleElems = new Array();
+	for (var i=0; i < singleElements.length; i++) {
+		for (var j=i+1; j < singleElements.length - 1; j++) {
+			if(singleElements[i].colorValue == singleElements[j].colorValue) {
+				sameSingleElems.push(singleElements[i]);
+				sameSingleElems.push(singleElements[j]);
+				return sameSingleElems;
+			}
+		}
 	}
 	return false;
 }
